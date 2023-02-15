@@ -1,9 +1,17 @@
 import { createHashRouter } from "react-router-dom";
-import ExampleList from "./ExampleList";
 import { Layout } from "./Layout";
+import ExampleList from "./ExampleList";
 import Overstate from "./examples/overstate";
+import EffectMissUse from "./examples/effect-for-state";
 
-const exampleList = [{ path: "/overstate", label: "Overstate" }];
+const exampleList = [
+  { path: "/overstate", label: "Overstate", element: <Overstate /> },
+  {
+    path: "/effect-for-state",
+    label: "Misusing effect for state update",
+    element: <EffectMissUse />,
+  },
+];
 
 export const router = createHashRouter([
   {
@@ -14,10 +22,7 @@ export const router = createHashRouter([
         index: true,
         element: <ExampleList list={exampleList} />,
       },
-      {
-        path: exampleList[0].path,
-        element: <Overstate />,
-      },
+      ...exampleList,
     ],
   },
 ]);
