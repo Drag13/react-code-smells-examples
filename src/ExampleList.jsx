@@ -4,9 +4,9 @@ export default function ExampleList({ list }) {
   return (
     <ul>
       {list.map((example, i) => (
-        <AppLink key={i} to={example.path}>
-          {example.label}
-        </AppLink>
+        <li key={i}>
+          <AppLink to={example.path}>{example.label}</AppLink>
+        </li>
       ))}
     </ul>
   );
