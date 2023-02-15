@@ -1,0 +1,15 @@
+.header {
+  padding: 1rem;
+}
+
+.main {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1012px;
+}
+
+.footer {
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}
