@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import styles from "./Layout.module.css";
 import { AppLink } from "./shared/AppLink";
+import { AppLogo } from "./shared/AppLogo";
 
 export const Layout = () => (
   <>
     <header className={styles.header}>
-      <AppLink to="/">Home</AppLink>
+      <AppLogo />
     </header>
     <main className={styles.main}>
       <Outlet />
