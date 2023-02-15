@@ -5,6 +5,7 @@ export default function App() {
   const [user, setUserData] = useState({
     firstName: "",
     secondName: "",
+    // composed value in the state
     fullName: "",
   });
 
@@ -15,6 +16,9 @@ export default function App() {
     setUserData({
       ...user,
       firstName: value,
+
+      // code duplication
+      // setting composed value into the state
       fullName: `${value}, ${secondName}`,
     });
   }
@@ -24,6 +28,9 @@ export default function App() {
     setUserData({
       ...user,
       secondName: value,
+
+      // code duplication
+      // setting composed value into the state
       fullName: `${firstName}, ${value}`,
     });
   }
