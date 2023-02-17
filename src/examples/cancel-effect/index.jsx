@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import style from "./index.module.css";
 const basePath = import.meta.env.VITE_API_BASE_PATH;
 
-const tabs = ["First Tab", "Second Tab"];
+const tabs = ["Dead orcs", "User Data"];
 
 export default function App() {
   const [tabName, setActiveTabName] = useState(tabs[0]);
@@ -41,7 +41,7 @@ const FirstTab = () => {
     }, 1000);
   }, []);
 
-  return <>Counter: {counter}</>;
+  return <>Dead orcs: {counter}</>;
 };
 
 const SecondTab = () => {
