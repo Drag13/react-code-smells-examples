@@ -1,0 +1,20 @@
+.tab {
+  display: flex;
+  gap: 1rem;
+  padding-inline-start: 0;
+}
+
+.tab label {
+  outline: 1px solid white;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.tab label:hover {
+  outline-color: red;
+  outline-width: 2px;
+}
+
+.tab label > input {
+  display: none;
+}

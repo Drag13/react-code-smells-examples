@@ -7,6 +7,7 @@ This is curated list of react code smells. All examples can be found in the ./sr
 ## List of smells
 
 - Setting calculated value to the state
+- Not cancelling lasting effects
 
 ## How to install
 

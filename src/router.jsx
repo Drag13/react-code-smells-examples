@@ -3,9 +3,15 @@ import { Layout } from "./Layout";
 import ExampleList from "./ExampleList";
 import Overstate from "./examples/overstate";
 import EffectMissUse from "./examples/effect-for-state";
+import CancelEffect from "./examples/cancel-effect";
 
 const exampleList = [
   { path: "/overstate", label: "Overstate", element: <Overstate /> },
+  {
+    path: "/cancel-effect",
+    label: "Cancel effect",
+    element: <CancelEffect />,
+  },
   {
     path: "/effect-for-state",
     label: "Misusing effect for state update",
