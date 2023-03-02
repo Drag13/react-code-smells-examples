@@ -6,9 +6,9 @@ This is curated list of react code smells. All examples can be found in the ./sr
 
 ## List of smells
 
-- Setting calculated value to the state [![Watch](./y.svg)](https://youtu.be/TioGnP_62oA)
+- Setting calculated value to the state [![Watch](y.svg)](https://youtu.be/TioGnP_62oA)
 
-- Not cancelling lasting effects [![Watch](./y.svg)](https://youtu.be/ldT5V0fqYdk)
+- Not cancelling lasting effects [![Watch](y.svg)](https://youtu.be/ldT5V0fqYdk)
 
 ## How to install
 
