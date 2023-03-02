@@ -4,9 +4,13 @@ import styles from "./index.module.css";
 export default function App() {
   const [c, setCounter] = useState(0);
 
-  const uselessCallback = useCallback(() => console.log(1), []);
+  const uselessCallback = useCallback(function independentFunc() {
+    console.log(1);
+  }, []);
 
-  const optimizedCallback = useCallback(() => setCounter((pv) => pv + 1), []);
+  const optimizedCallback = useCallback(function complexFunc() {
+    setCounter((pv) => pv + 1);
+  }, []);
 
   function defaultCallback() {
     setCounter((pv) => pv + 1);
