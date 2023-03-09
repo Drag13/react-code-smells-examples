@@ -10,6 +10,8 @@ This is curated list of react code smells. All examples can be found in the ./sr
 
 - Not cancelling lasting effects [![Watch](y.svg)](https://youtu.be/ldT5V0fqYdk)
 
+- Redundant useCallbacks [![Watch](y.svg)](https://youtu.be/by2ThDcOQog)
+
 ## How to install
 
 To install the app
