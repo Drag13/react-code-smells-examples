@@ -5,6 +5,7 @@ import Overstate from "./examples/overstate";
 import EffectMissUse from "./examples/effect-for-state";
 import CancelEffect from "./examples/cancel-effect";
 import UseCallbackOverUse from "./examples/use-callback";
+import RedundantConstants from "./examples/redundant-consts";
 
 const exampleList = [
   { path: "/overstate", label: "Overstate", element: <Overstate /> },
@@ -22,6 +23,12 @@ const exampleList = [
     path: "use-callback",
     label: "Overusing useCallback hook",
     element: <UseCallbackOverUse />,
+  },
+
+  {
+    path: "/redundant-costs",
+    label: "Redundant structures in the components",
+    element: <RedundantConstants />,
   },
 ];
 
