@@ -12,6 +12,8 @@ This is curated list of react code smells. All examples can be found in the ./sr
 
 - Redundant useCallbacks [![Watch](y.svg)](https://youtu.be/by2ThDcOQog)
 
+- Redundant structures in the components [![Watch](y.svg)](https://youtu.be/vsIeKWSOQSM)
+
 ## How to install
 
 To install the app
