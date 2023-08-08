@@ -29,3 +29,7 @@ body {
   flex-direction: column;
   width: 100%;
 }
+
+html {
+  padding-right: calc(17px - (100vw - 100%));
+}

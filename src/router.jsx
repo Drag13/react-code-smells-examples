@@ -41,7 +41,7 @@ const exampleList = [
       { index: true, element: <GamesPage /> },
       {
         element: <AchievementsPage />,
-        path: "achievements",
+        path: ":gameId/achievements",
       },
     ],
   },
