@@ -18,7 +18,7 @@ export function Nav() {
       <div style={{ display: "flex", gap: "1rem" }}>
         <AppLink to="/global-store/">Ігри </AppLink>
       </div>
-      <div>{user.name}</div>
+      <div style={{ cursor: "help" }}>{user.name}</div>
     </nav>
   );
 }

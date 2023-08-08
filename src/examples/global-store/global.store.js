@@ -10,7 +10,7 @@ const initialState = {
   allAchievements,
   filteredAchievements: allAchievements,
   user: { name: "Vitalii" },
-  expanded: false,
+  expanded: {},
 };
 
 const globalStoreSlice = createSlice({
@@ -31,10 +31,12 @@ const globalStoreSlice = createSlice({
         includesIgnoreCase(title, payload)
       ),
     }),
-    toggle: (state) => ({
-      ...state,
-      expanded: !state.expanded,
-    }),
+    toggle: (state, { payload }) => {
+      return {
+        ...state,
+        expanded: { ...state.expanded, [payload]: !state.expanded[payload] },
+      };
+    },
   },
 });
 

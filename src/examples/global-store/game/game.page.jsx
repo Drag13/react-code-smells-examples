@@ -4,26 +4,17 @@ import {
   toggleExpandedReducer,
 } from "../global.store";
 import { AppLink } from "../../../shared/AppLink";
+import { memo } from "react";
 
 export function GamesPage() {
   // using global state instead of using selector
   const { store } = useSelector((state) => state);
-  const { searchTerm, filteredGames: games } = store;
-  const dispatch = useDispatch();
-  const searchGame = (e) => dispatch(searchGameReducer(e.target.value));
+  const { filteredGames: games } = store;
   return (
     <>
       <h1>ТОП-5 ігр за версією Metacritic</h1>
 
-      <form>
-        <label htmlFor="game-search">Шукаємо </label>
-        <input
-          id="game-search"
-          type="text"
-          value={searchTerm}
-          onChange={searchGame}
-        />
-      </form>
+      <Search />
 
       <ul>
         {games.map(({ id }) => (
@@ -33,6 +24,24 @@ export function GamesPage() {
         ))}
       </ul>
     </>
+  );
+}
+
+function Search() {
+  const dispatch = useDispatch();
+  const searchGame = (e) => dispatch(searchGameReducer(e.target.value));
+  const { store } = useSelector((state) => state);
+  const { searchTerm } = store;
+  return (
+    <form>
+      <label htmlFor="game-search">Шукаємо </label>
+      <input
+        id="game-search"
+        type="text"
+        value={searchTerm}
+        onChange={searchGame}
+      />
+    </form>
   );
 }
 
@@ -50,15 +59,19 @@ function Game({ id }) {
           Мої досягнення
         </AppLink>
       </p>
-      <ExpandCollapse full={description} short={description.substring(0, 15)} />
+      <ExpandCollapse
+        id={id}
+        full={description}
+        short={description.substring(0, 15)}
+      />
     </>
   );
 }
 
-function ExpandCollapse({ short, full }) {
-  const expanded = useSelector((x) => x.store.expanded);
+function ExpandCollapse({ short, full, id }) {
+  const expanded = useSelector((x) => x.store.expanded)[id];
   const dispatch = useDispatch();
-  const toggle = () => dispatch(toggleExpandedReducer());
+  const toggle = () => dispatch(toggleExpandedReducer(id));
   return (
     <div>
       {expanded ? <p>{full}</p> : null}
@@ -70,3 +83,5 @@ function ExpandCollapse({ short, full }) {
     </div>
   );
 }
+
+const ExpandCollapseMemo = memo(ExpandCollapse);
