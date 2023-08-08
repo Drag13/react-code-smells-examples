@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-import allGames from "./games/games.json";
+import allGames from "./game/games.json";
 import allAchievements from "./achievements/achievements.json";
 import { includesIgnoreCase } from "../../shared/utils/string";
 
@@ -13,7 +13,7 @@ const initialState = {
   expanded: false,
 };
 
-const globalStoreReducer = createSlice({
+const globalStoreSlice = createSlice({
   name: "globalStore",
   initialState,
   reducers: {
@@ -38,13 +38,15 @@ const globalStoreReducer = createSlice({
   },
 });
 
-export const searchGameReducer = globalStoreReducer.actions.searchGame;
+export const searchGameReducer = globalStoreSlice.actions.searchGame;
+
 export const searchAchievementsReducer =
-  globalStoreReducer.actions.searchAchievements;
-export const toggleExpandedReducer = globalStoreReducer.actions.toggle;
+  globalStoreSlice.actions.searchAchievements;
+
+export const toggleExpandedReducer = globalStoreSlice.actions.toggle;
 
 export const globalStore = configureStore({
   reducer: {
-    store: globalStoreReducer.reducer,
+    store: globalStoreSlice.reducer,
   },
 });

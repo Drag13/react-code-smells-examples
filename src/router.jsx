@@ -7,7 +7,7 @@ import CancelEffect from "./examples/cancel-effect";
 import UseCallbackOverUse from "./examples/use-callback";
 import RedundantConstants from "./examples/redundant-consts";
 import GlobalStoreOverusing from "./examples/global-store";
-import { GamesPage } from "./examples/global-store/games/games.page";
+import { GamesPage } from "./examples/global-store/game/game.page";
 import { AchievementsPage } from "./examples/global-store/achievements/achievements.page";
 
 const exampleList = [
