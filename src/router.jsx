@@ -8,7 +8,7 @@ import UseCallbackOverUse from "./examples/use-callback";
 import RedundantConstants from "./examples/redundant-consts";
 import GlobalStoreOverusing from "./examples/global-store";
 import { GamesPage } from "./examples/global-store/game/game.page";
-import { AchievementsPage } from "./examples/global-store/achievements/achievements.page";
+import { SummaryPage } from "./examples/global-store/game/summary";
 
 const exampleList = [
   { path: "/overstate", label: "Overstate", element: <Overstate /> },
@@ -40,8 +40,8 @@ const exampleList = [
     children: [
       { index: true, element: <GamesPage /> },
       {
-        element: <AchievementsPage />,
-        path: ":gameId/achievements",
+        element: <SummaryPage />,
+        path: "summary",
       },
     ],
   },

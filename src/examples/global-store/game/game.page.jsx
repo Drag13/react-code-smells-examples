@@ -1,10 +1,6 @@
-import { useSelector, useDispatch, useStore } from "react-redux";
-import {
-  searchGameReducer as searchGameReducer,
-  toggleExpandedReducer,
-} from "../global.store";
-import { AppLink } from "../../../shared/AppLink";
-import { memo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { searchGameReducer as searchGameReducer } from "../global.store";
+import { Game } from "./game";
 
 export function GamesPage() {
   // using global state instead of using selector
@@ -15,7 +11,7 @@ export function GamesPage() {
       <h1>ТОП-5 ігр за версією Metacritic</h1>
 
       <Search />
-
+      <SearchResult />
       <ul>
         {games.map(({ id }) => (
           <li key={id}>
@@ -28,6 +24,7 @@ export function GamesPage() {
 }
 
 function Search() {
+  // CODE SMELL #6 PSEUDE LOCAL STATE
   const dispatch = useDispatch();
   const searchGame = (e) => dispatch(searchGameReducer(e.target.value));
   const { store } = useSelector((state) => state);
@@ -45,43 +42,14 @@ function Search() {
   );
 }
 
-function Game({ id }) {
-  const { store } = useSelector((state) => state);
-  const { filteredGames } = store;
-  const game = filteredGames.find((x) => x.id === id);
-  const { score, title, description } = game;
-  return (
-    <>
-      <h2>{title}</h2>
-      <p>Metacritic: {score}</p>
-      <p>
-        <AppLink to={`/global-store/${id}/achievements/`}>
-          Мої досягнення
-        </AppLink>
-      </p>
-      <ExpandCollapse
-        id={id}
-        full={description}
-        short={description.substring(0, 15)}
-      />
-    </>
+function SearchResult() {
+  // CODE SMELL #6 PSEUDE LOCAL STATE
+  const { searchTerm } = useSelector((state) => state.store);
+  return searchTerm ? (
+    <i>
+      Шукаємо <b>{searchTerm}</b>
+    </i>
+  ) : (
+    <i>Введіть текст для пошуку</i>
   );
 }
-
-function ExpandCollapse({ short, full, id }) {
-  const expanded = useSelector((x) => x.store.expanded)[id];
-  const dispatch = useDispatch();
-  const toggle = () => dispatch(toggleExpandedReducer(id));
-  return (
-    <div>
-      {expanded ? <p>{full}</p> : null}
-      {!expanded ? (
-        <button type="button" onClick={toggle}>
-          {short}
-        </button>
-      ) : null}
-    </div>
-  );
-}
-
-const ExpandCollapseMemo = memo(ExpandCollapse);

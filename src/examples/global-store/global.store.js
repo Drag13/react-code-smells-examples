@@ -1,18 +1,16 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import allGames from "./game/games.json";
-import allAchievements from "./achievements/achievements.json";
 import { includesIgnoreCase } from "../../shared/utils/string";
 
 const initialState = {
   searchTerm: "",
   allGames,
   filteredGames: allGames,
-  allAchievements,
-  filteredAchievements: allAchievements,
   user: { name: "Vitalii" },
   expanded: {},
 };
 
+// CODE SMELL #1 - SINGLE SLICE
 const globalStoreSlice = createSlice({
   name: "globalStore",
   initialState,
@@ -20,6 +18,7 @@ const globalStoreSlice = createSlice({
     searchGame: (state, { payload }) => ({
       ...state,
       searchTerm: payload,
+      // CODE SMELL #7 TRANSFORMED DATA IN STORE
       filteredGames: state.allGames.filter(({ title }) =>
         includesIgnoreCase(title, payload)
       ),
