@@ -6,6 +6,9 @@ import EffectMissUse from "./examples/effect-for-state";
 import CancelEffect from "./examples/cancel-effect";
 import UseCallbackOverUse from "./examples/use-callback";
 import RedundantConstants from "./examples/redundant-consts";
+import GlobalStoreOverusing from "./examples/global-store";
+import { GamesPage } from "./examples/global-store/game/game.page";
+import { SummaryPage } from "./examples/global-store/game/summary";
 
 const exampleList = [
   { path: "/overstate", label: "Overstate", element: <Overstate /> },
@@ -29,6 +32,18 @@ const exampleList = [
     path: "/redundant-costs",
     label: "Redundant structures in the components",
     element: <RedundantConstants />,
+  },
+  {
+    path: "/global-store",
+    label: "Global store overusing",
+    element: <GlobalStoreOverusing />,
+    children: [
+      { index: true, element: <GamesPage /> },
+      {
+        element: <SummaryPage />,
+        path: "summary",
+      },
+    ],
   },
 ];
 
