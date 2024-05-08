@@ -14,6 +14,8 @@ This is curated list of react code smells. All examples can be found in the ./sr
 
 - Redundant structures in the components [![Watch](y.svg)](https://youtu.be/vsIeKWSOQSM)
 
+- Redux store code smells [![Watch](y.svg)](https://youtu.be/Z5jFWDOTiMw?feature=shared)
+
 ## How to install
 
 To install the app
