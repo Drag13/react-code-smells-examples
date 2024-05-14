@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './props-drilling.module.css';
+import { userInfo } from './userInfo';
 
 export default function App() {
   const [userData, setUserData] = useState({
@@ -11,25 +12,7 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       setUserData({
-        user: {
-          name: 'Vitalii',
-          age: 19,
-          lastVisit: new Date('01/01/2024'),
-          operations: [
-            {
-              value: 100,
-              sign: '+',
-            },
-            {
-              value: 200,
-              sign: '+',
-            },
-            {
-              value: 400,
-              sign: '-',
-            },
-          ],
-        },
+        user: userInfo,
         loading: false,
         error: null,
       });
@@ -46,60 +29,60 @@ export default function App() {
     return <>error</>;
   }
 
-  return <Layout user={user}></Layout>;
+  return <Layout user={user} />;
 }
 
 function Layout({ user }) {
   return (
     <>
-      <Navigation user={user} />
-      <Body user={user} />
-      <Footer user={user} />
+      <Navigation userName={user.name} />
+      <Body operations={user.operations} userAge={user.age} />
+      <Footer lastVisit={user.lastVisit} />
     </>
   );
 }
 
-function Navigation({ user }) {
+function Navigation({ userName }) {
   return (
     <div className={`${styles.border} ${styles.nav}`}>
-      Navigation block. <div>Hello {user.name}</div>
+      Navigation block. <div>Hello {userName}</div>
     </div>
   );
 }
 
-function Body({ user }) {
-  const isAllowedToView = user.age >= 18;
+function Body({ userAge, operations }) {
+  const isAllowedToView = userAge >= 18;
   return (
     <div className={styles.border}>
       Main block:{' '}
-      {isAllowedToView ? (
-        <Operations operations={user.operations} />
-      ) : (
-        'Not Allowed'
-      )}
+      {isAllowedToView ? <Operations operations={operations} /> : 'Not Allowed'}
     </div>
   );
 }
 
 function Operations({ operations }) {
+  const totalAmount = 1000;
   return (
     <>
       <ul>
         {operations.map(({ sign, value }, i) => (
           <li key={i}>
-            {sign === '+' ? 'Gain' : 'Lost'} {' '}
-            {value}
+            {sign === '+' ? 'Gain' : 'Lost'} {value}
           </li>
         ))}
       </ul>
+
+      Total: {totalAmount}
     </>
   );
 }
 
-function Footer({ user }) {
+function Footer({ lastVisit }) {
   return (
     <div className={styles.border}>
-      Footer block: Last visited: {user.lastVisit.toLocaleDateString()}
+      Footer block: Last visited: {lastVisit.toLocaleDateString()}
     </div>
   );
 }
+
+
